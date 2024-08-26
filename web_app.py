@@ -2,23 +2,15 @@ import pickle
 import numpy as np
 import streamlit as st
 
-model = pickle.load(open('model.pkl', 'rb'))
+model ='model.pkl', 'rb'
 
 col0, col1, col2, col3, col4, col5, col6 = st.columns(7)
-with col0:
-    st.write('')
-with col1:
-    st.write('')
-with col2:
-    st.write('')    
+
 with col3:
     st.title("ⴍage") 
 with col4:
     st.write('')
-with col5:
-    st.write('')
-with col6:
-    st.write('')
+
 
 col7, col8, col9 = st.columns(3)
 with col7:
