@@ -12,7 +12,7 @@ with col1:
 with col2:
     st.write('')    
 with col3:
-    st.title("GREY 59 APP") 
+    st.title("GREY") 
 with col4:
     st.write('')
 with col5:
