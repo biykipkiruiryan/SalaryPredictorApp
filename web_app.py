@@ -13,7 +13,6 @@ with col3:
 with col4:
     st.write('')
 
-
 col7, col8, col9 = st.columns(3)
 with col7:
     st.write('')    
@@ -21,6 +20,7 @@ with col8:
     st.markdown("<h6 style='text-align: center;'>A simple web app to predict annual salary</h6>", unsafe_allow_html=True)
 with col9:
     st.write('')
+
 # Define lists for the options of gender, education, and job titles.
 gen_list = ["Female", "Male"]
 edu_list = ["Bachelor's", "Master's", "PhD"]
@@ -44,6 +44,7 @@ with col13:
     st.write('')
 with col14:
     st.write('')
+
 # When the "Predict Salary" button is clicked
 if predict_btn:
     inp1 = int(age)
@@ -54,8 +55,8 @@ if predict_btn:
     
     X = np.array([[inp1, inp2, inp3, inp4, inp5]])
     
-    # Predict the salary
     salary = model.predict(X)
+    
     col15, col16, col17 = st.columns(3)
     with col15:
         st.write('')  
@@ -63,6 +64,3 @@ if predict_btn:
         st.text(f"Estimated salary: ${int(salary[0])}")
     with col17:
         st.write('')
-
-
-
