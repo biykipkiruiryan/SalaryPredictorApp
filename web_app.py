@@ -2,7 +2,9 @@ import pickle
 import numpy as np
 import streamlit as st
 
-model ='model.pkl', 'rb'
+# Load the trained model
+with open('model.pkl', 'rb') as file:
+    model = pickle.load(file)
 
 col0, col1, col2, col3, col4, col5, col6 = st.columns(7)
 
@@ -19,7 +21,7 @@ with col8:
     st.markdown("<h6 style='text-align: center;'>A simple web app to predict annual salary</h6>", unsafe_allow_html=True)
 with col9:
     st.write('')
-
+# Define lists for the options of gender, education, and job titles.
 gen_list = ["Female", "Male"]
 edu_list = ["Bachelor's", "Master's", "PhD"]
 job_list = ["Director of Marketing", "Director of Operations", "Senior Data Scientist", "Senior Financial Analyst", "Senior Software Engineer"]
@@ -42,21 +44,25 @@ with col13:
     st.write('')
 with col14:
     st.write('')
-
-if(predict_btn):
+# When the "Predict Salary" button is clicked
+if predict_btn:
     inp1 = int(age)
     inp2 = float(experience)
     inp3 = int(job_idx[job_list.index(job)])
     inp4 = int(edu_list.index(education))
     inp5 = int(gen_list.index(gender))
-    X = [inp1, inp2, inp3, inp4, inp5]
-    salary = model.predict([X])
+    
+    X = np.array([[inp1, inp2, inp3, inp4, inp5]])
+    
+    # Predict the salary
+    salary = model.predict(X)
     col15, col16, col17 = st.columns(3)
     with col15:
-        st.write('')    
+        st.write('')  
     with col16:
         st.text(f"Estimated salary: ${int(salary[0])}")
     with col17:
         st.write('')
+
 
 
