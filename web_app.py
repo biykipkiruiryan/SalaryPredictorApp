@@ -2,7 +2,11 @@ import pickle
 import numpy as np
 import streamlit as st
 
-model = pickle.load(open('model.pkl', 'rb'))
+model_path = os.path.join(os.path.dirname(__file__), 'model.pkl')
+if not os.path.isfile(model_path):
+    raise FileNotFoundError(f"Model file {model_path} not found.")
+model = pickle.load(open(model_path, 'rb'))
+
 
 col0, col1, col2, col3, col4, col5, col6 = st.columns(7)
 with col0:
