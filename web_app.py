@@ -5,6 +5,8 @@ import streamlit as st
 # Load the trained model
 with open('model.pkl', 'rb') as file:
     model = pickle.load(file)
+except ModuleNotFoundError as e:
+st.error(f"Required module is missing: {e}")    
 
 col0, col1, col2, col3, col4, col5, col6 = st.columns(7)
 
