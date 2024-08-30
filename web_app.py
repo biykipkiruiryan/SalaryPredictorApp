@@ -2,17 +2,22 @@ import pickle
 import numpy as np
 import streamlit as st
 
-# Load the trained model
-with open('model.pkl', 'rb') as file:
-    model = pickle.load(file)
-except ModuleNotFoundError as e:
-st.error(f"Required module is missing: {e}")    
+model = pickle.load(open('model.pkl', 'rb'))
 
 col0, col1, col2, col3, col4, col5, col6 = st.columns(7)
-
+with col0:
+    st.write('')
+with col1:
+    st.write('')
+with col2:
+    st.write('')    
 with col3:
     st.title("ⴍage") 
 with col4:
+    st.write('')
+with col5:
+    st.write('')
+with col6:
     st.write('')
 
 col7, col8, col9 = st.columns(3)
@@ -23,7 +28,6 @@ with col8:
 with col9:
     st.write('')
 
-# Define lists for the options of gender, education, and job titles.
 gen_list = ["Female", "Male"]
 edu_list = ["Bachelor's", "Master's", "PhD"]
 job_list = ["Director of Marketing", "Director of Operations", "Senior Data Scientist", "Senior Financial Analyst", "Senior Software Engineer"]
@@ -47,22 +51,19 @@ with col13:
 with col14:
     st.write('')
 
-# When the "Predict Salary" button is clicked
-if predict_btn:
+if(predict_btn):
     inp1 = int(age)
     inp2 = float(experience)
     inp3 = int(job_idx[job_list.index(job)])
     inp4 = int(edu_list.index(education))
     inp5 = int(gen_list.index(gender))
-    
-    X = np.array([[inp1, inp2, inp3, inp4, inp5]])
-    
-    salary = model.predict(X)
-    
+    X = [inp1, inp2, inp3, inp4, inp5]
+    salary = model.predict([X])
     col15, col16, col17 = st.columns(3)
     with col15:
-        st.write('')  
+        st.write('')    
     with col16:
         st.text(f"Estimated salary: ${int(salary[0])}")
     with col17:
         st.write('')
+
